@@ -38,7 +38,32 @@ namespace Cashier.App
         
         private void textBoxInput_KeyDown(object sender, KeyEventArgs e)
         {
-            
+            if (e.KeyCode == Keys.Up)
+            {
+                bindingSourceMain.MovePrevious();
+                documentModel.CurrentItem = (PurchaseDocumentItemViewModel)bindingSourceMain.Current;
+                return;
+            }
+
+            if (e.KeyCode == Keys.Down)
+            {
+                bindingSourceMain.MoveNext();
+                documentModel.CurrentItem = (PurchaseDocumentItemViewModel)bindingSourceMain.Current;
+                return;
+            }
+
+            if (e.KeyCode == Keys.Delete)
+            {
+                int p = bindingSourceMain.CurrencyManager.Position;
+                bindingSourceMain.RemoveCurrent();
+                documentModel.CurrentItem = (PurchaseDocumentItemViewModel)bindingSourceMain.Current;
+                if(p > 0)
+                    dataGridViewMain.Rows[p - 1].Selected = true;
+                documentModel.NotifyChanged();
+                return;
+            }
+
+
             if (e.KeyCode != Keys.Enter)
                 return;
             if (textBoxInput.Text.StartsWith("#"))
