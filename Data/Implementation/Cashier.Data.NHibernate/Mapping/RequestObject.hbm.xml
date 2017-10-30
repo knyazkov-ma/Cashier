@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Cashier.Entity.RequestObject, Cashier.Entity" 
+         table="RequestObject" lazy="false">
+    <id name="Id" column="Id" unsaved-value="0">
+      <generator class="sequence">
+        <param name="sequence">SQ_GLOBAL</param>
+      </generator>
+    </id>
+    <property insert="false" update="false" name="SoftName" length="200" />
+    
+    <many-to-one  foreign-key="RequestObject_ObjectType_FK" name="ObjectType"  column="ObjectTypeId" class="Cashier.Entity.ObjectType, Cashier.Entity" not-null="true"/>
+    <many-to-one foreign-key="RequestObject_HardType_FK" name="HardType"  column="HardTypeId" class="Cashier.Entity.HardType, Cashier.Entity" />
+    <many-to-one foreign-key="RequestObject_Model_FK" name="Model"  column="ModelId" class="Cashier.Entity.Model, Cashier.Entity" />
+    <property update="false" name="Archive" type="Boolean" not-null="true"/>
+
+  </class>
+</hibernate-mapping>
