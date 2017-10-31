@@ -235,7 +235,7 @@
             // 
             this.labelDocumentAmount.AutoSize = true;
             this.labelDocumentAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDocumentAmount.Location = new System.Drawing.Point(585, 419);
+            this.labelDocumentAmount.Location = new System.Drawing.Point(550, 419);
             this.labelDocumentAmount.Name = "labelDocumentAmount";
             this.labelDocumentAmount.Size = new System.Drawing.Size(178, 55);
             this.labelDocumentAmount.TabIndex = 13;
