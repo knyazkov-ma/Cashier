@@ -1,6 +1,5 @@
 ﻿using Cashier.App.ViewModel;
 using Cashier.DataService.DTO;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 

@@ -2,7 +2,6 @@
 using System;
 using System.Windows.Forms;
 using Unity;
-using Unity.ServiceLocation;
 
 namespace Cashier.App
 {
@@ -21,11 +20,10 @@ namespace Cashier.App
 
             UnityConfig.RegisterTypes(unityContainer);
 
-            UnityServiceLocator serviceLocator = new UnityServiceLocator(UnityConfig.GetConfiguredContainer());
-            IMigrationRunner migrationRunner = serviceLocator.GetInstance<IMigrationRunner>();
+            IMigrationRunner migrationRunner = unityContainer.Resolve<IMigrationRunner>();
             migrationRunner.Update();
 
-            Application.Run(new FormMain());
+            Application.Run(unityContainer.Resolve<FormMain>());
         }
     }
 }

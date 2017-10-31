@@ -61,7 +61,11 @@ namespace Cashier.App
 
             //регистрация дата-сервисов
             DataServiceInstaller.Install(container);
-            
+
+
+            container.RegisterType<FormMain>();
+
+
         }
         
     }

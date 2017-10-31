@@ -4,7 +4,6 @@ using Cashier.DataService.Interface;
 using System;
 using System.Windows.Forms;
 using Cashier.App.Mapper;
-using Unity.ServiceLocation;
 using Cashier.Entity;
 
 namespace Cashier.App
@@ -13,12 +12,16 @@ namespace Cashier.App
     {
         private SaleDocumentViewModel documentModel;
         private readonly ISaleDocumentService saleDocumentService;
+
+        public FormMain(ISaleDocumentService saleDocumentService)
+            :this()
+        {
+            this.saleDocumentService = saleDocumentService; ;
+        }
+
         public FormMain()
         {
             InitializeComponent();
-            UnityServiceLocator serviceLocator = new UnityServiceLocator(UnityConfig.GetConfiguredContainer());
-            saleDocumentService = serviceLocator.GetInstance<ISaleDocumentService>();
-            
         }
 
         private void setDataBindings()
