@@ -5,19 +5,19 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.App", "Cashier.App\Cashier.App.csproj", "{C9B3D2AD-0C68-4E8B-B111-7DF36D5CA711}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.DataService", "..\Cashier.DataService\Cashier.DataService.csproj", "{38AA8F33-A36E-45EB-8BC8-999FF4FF2E78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.DataService", "Cashier.DataService\Cashier.DataService.csproj", "{38AA8F33-A36E-45EB-8BC8-999FF4FF2E78}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{02E9AA9C-30CC-488B-A3E9-2D927D1D5522}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.Data", "..\Data\Cashier.Data\Cashier.Data.csproj", "{A13CA957-A9B4-4476-BF79-CB115BB611CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.Data", "Data\Cashier.Data\Cashier.Data.csproj", "{A13CA957-A9B4-4476-BF79-CB115BB611CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchemaGenerator", "..\Data\Implementation\SchemaGenerator\SchemaGenerator.csproj", "{830D0361-E3E5-4E5C-967D-9BC201CDDC32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchemaGenerator", "Data\Implementation\SchemaGenerator\SchemaGenerator.csproj", "{830D0361-E3E5-4E5C-967D-9BC201CDDC32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.Data.NHibernate.Repository", "..\Data\Implementation\Cashier.Data.NHibernate.Repository\Cashier.Data.NHibernate.Repository.csproj", "{B2C53EC7-C7D8-4DAD-8BCC-F644E3F5D217}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.Data.NHibernate.Repository", "Data\Implementation\Cashier.Data.NHibernate.Repository\Cashier.Data.NHibernate.Repository.csproj", "{B2C53EC7-C7D8-4DAD-8BCC-F644E3F5D217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.Data.NHibernate", "..\Data\Implementation\Cashier.Data.NHibernate\Cashier.Data.NHibernate.csproj", "{C480A8C6-A30E-4519-B2CA-E48B62E53CA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.Data.NHibernate", "Data\Implementation\Cashier.Data.NHibernate\Cashier.Data.NHibernate.csproj", "{C480A8C6-A30E-4519-B2CA-E48B62E53CA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.Entity", "..\Cashier.Entity\Cashier.Entity.csproj", "{99B07FDA-7F68-4348-9794-2134D3352475}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashier.Entity", "Cashier.Entity\Cashier.Entity.csproj", "{99B07FDA-7F68-4348-9794-2134D3352475}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
