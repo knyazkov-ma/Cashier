@@ -4,6 +4,7 @@ using Cashier.DataService.Interface;
 using System;
 using System.Windows.Forms;
 using Cashier.App.Mapper;
+using Unity.ServiceLocation;
 
 namespace Cashier.App
 {
@@ -14,14 +15,15 @@ namespace Cashier.App
         public FormMain()
         {
             InitializeComponent();
-            saleDocumentService = new SaleDocumentService();
+            UnityServiceLocator serviceLocator = new UnityServiceLocator(UnityConfig.GetConfiguredContainer());
+            saleDocumentService = serviceLocator.GetInstance<ISaleDocumentService>();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
             documentModel = saleDocumentService.GetNew().ToModel();
 
-            labelDocumentNumber.DataBindings.Add("Text", documentModel, "DocumentNumber");
+            labelDocumentNumber.DataBindings.Add("Text", documentModel, "Id");
             labelPositionCount.DataBindings.Add("Text", documentModel, "PositionCount");
             labelDocumentAmount.DataBindings.Add("Text", documentModel, "DocumentAmount");
             labelDocumentState.DataBindings.Add("Text", documentModel, "DocumentState");

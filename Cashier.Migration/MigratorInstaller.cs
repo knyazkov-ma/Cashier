@@ -1,5 +1,5 @@
-﻿using Microsoft.Practices.Unity;
-
+﻿using Unity;
+using Unity.Injection;
 
 namespace Cashier.Migration
 {

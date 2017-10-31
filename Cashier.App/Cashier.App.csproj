@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.1\lib\net45\CommonServiceLocator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,6 +48,34 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.1.2\lib\net45\Unity.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Configuration, Version=5.0.2.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.1.2\lib\net45\Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.1.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.1.2\lib\net45\Unity.Container.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Interception, Version=5.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.1.2\lib\net45\Unity.Interception.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Interception.Configuration, Version=5.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.1.2\lib\net45\Unity.Interception.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.RegistrationByConvention, Version=2.0.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.1.2\lib\net45\Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.ServiceLocation, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.1.2\lib\net45\Unity.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormMain.cs">
@@ -56,6 +88,7 @@
     <Compile Include="Mapper\SaleDocumentMapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnityConfig.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\SaleDocumentItemViewModel.cs" />
     <Compile Include="ViewModel\SaleDocumentViewModel.cs" />
@@ -71,6 +104,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -88,6 +122,22 @@
     <ProjectReference Include="..\Cashier.DataService\Cashier.DataService.csproj">
       <Project>{38aa8f33-a36e-45eb-8bc8-999ff4ff2e78}</Project>
       <Name>Cashier.DataService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cashier.Migration\Cashier.Migration.csproj">
+      <Project>{FF70AF8F-855F-4D89-BC47-B65B8F5FFA3A}</Project>
+      <Name>Cashier.Migration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Cashier.Data\Cashier.Data.csproj">
+      <Project>{A13CA957-A9B4-4476-BF79-CB115BB611CB}</Project>
+      <Name>Cashier.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Implementation\Cashier.Data.NHibernate.Repository\Cashier.Data.NHibernate.Repository.csproj">
+      <Project>{b2c53ec7-c7d8-4dad-8bcc-f644e3f5d217}</Project>
+      <Name>Cashier.Data.NHibernate.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Implementation\Cashier.Data.NHibernate\Cashier.Data.NHibernate.csproj">
+      <Project>{c480a8c6-a30e-4519-b2ca-e48b62e53ca6}</Project>
+      <Name>Cashier.Data.NHibernate</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

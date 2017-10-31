@@ -12,11 +12,7 @@ namespace Cashier.Entity
         /// </summary>
         public SaleDocumentState State { get; set; }
 
-        /// <summary>
-        /// Номер
-        /// </summary>
-        public string Number { get; set; }
-
+        
         /// <summary>
         /// Товарные позиции
         /// </summary>

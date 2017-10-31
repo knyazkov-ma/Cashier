@@ -8,8 +8,7 @@
     </id>
 
     <property name="State" type="Cashier.Entity.SaleDocumentState, Cashier.Entity" not-null="true"/>
-    <property name="Number"    length="200"  unique="true" index="SaleDocument_Number_idx" not-null="true"/>
-
+    
     <bag name="Items" table="SaleDocumentItem" cascade="all,delete-orphan,save-update" inverse="true">
       <key column="SaleDocumentId" />
       <one-to-many class="Cashier.Entity.SaleDocumentItem, Cashier.Entity" />

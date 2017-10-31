@@ -9,7 +9,6 @@ namespace Cashier.App.Mapper
         {
             var model = new SaleDocumentViewModel();
             model.Id = dto.Id;
-            model.DocumentNumber = dto.Number;
             model.DocumentState = dto.State;
 
             return model;

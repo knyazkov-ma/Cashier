@@ -26,7 +26,6 @@
     create table SaleDocument (
         Id BIGINT not null,
        State INT not null,
-       Number VARCHAR(200) not null unique,
        primary key (Id)
     )
 
@@ -39,8 +38,6 @@
         add constraint Stock_Catalog_FK 
         foreign key (CatalogId) 
         references Catalog
-
-    create index SaleDocument_Number_idx on SaleDocument (Number)
 	
 	create sequence SQ_GLOBAL as int start with 100000 increment by 1
 
