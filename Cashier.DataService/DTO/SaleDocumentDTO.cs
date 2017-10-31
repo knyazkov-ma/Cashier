@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Cashier.Entity;
+using System.Collections.Generic;
 
 namespace Cashier.DataService.DTO
 {
@@ -6,8 +7,8 @@ namespace Cashier.DataService.DTO
     {
         public long Id { get; set; }
 
-        public string State { get; set; }
-        
+        public SaleDocumentState State { get; set; }
+
         public IEnumerable<SaleDocumentItemDTO> Items { get; set; }
     }
 }

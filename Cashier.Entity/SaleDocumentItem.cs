@@ -6,6 +6,11 @@
     public class SaleDocumentItem : BaseEntity
     {
         /// <summary>
+        /// Код
+        /// </summary>
+        public string Code { get; set; }
+
+        /// <summary>
         /// Наименование
         /// </summary>
         public string Name { get; set; }
@@ -24,5 +29,10 @@
         /// Стоимость
         /// </summary>
         public decimal Amount { get; set; }
+
+        /// <summary>
+        /// Документ продажи
+        /// </summary>
+        public SaleDocument Document { get; set; }
     }
 }

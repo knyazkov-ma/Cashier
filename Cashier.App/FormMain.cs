@@ -1,10 +1,11 @@
 ﻿using Cashier.App.ViewModel;
-using Cashier.DataService;
+using System.Linq;
 using Cashier.DataService.Interface;
 using System;
 using System.Windows.Forms;
 using Cashier.App.Mapper;
 using Unity.ServiceLocation;
+using Cashier.Entity;
 
 namespace Cashier.App
 {
@@ -17,29 +18,70 @@ namespace Cashier.App
             InitializeComponent();
             UnityServiceLocator serviceLocator = new UnityServiceLocator(UnityConfig.GetConfiguredContainer());
             saleDocumentService = serviceLocator.GetInstance<ISaleDocumentService>();
+            
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
+        private void setDataBindings()
         {
-            documentModel = saleDocumentService.GetNew().ToModel();
-
+            labelDocumentNumber.DataBindings.Clear();
             labelDocumentNumber.DataBindings.Add("Text", documentModel, "Id");
-            labelPositionCount.DataBindings.Add("Text", documentModel, "PositionCount");
-            labelDocumentAmount.DataBindings.Add("Text", documentModel, "DocumentAmount");
-            labelDocumentState.DataBindings.Add("Text", documentModel, "DocumentState");
 
+            labelPositionCount.DataBindings.Clear();
+            labelPositionCount.DataBindings.Add("Text", documentModel, "PositionCount");
+
+            labelDocumentAmount.DataBindings.Clear();
+            labelDocumentAmount.DataBindings.Add("Text", documentModel, "DocumentAmount");
+
+            labelDocumentState.DataBindings.Clear();
+            labelDocumentState.DataBindings.Add("Text", documentModel, "DocumentStateName");
+
+            labelCurrentCode.DataBindings.Clear();
             labelCurrentCode.DataBindings.Add("Text", documentModel, "CurrentItem.Code");
+
+            labelCurrentPrice.DataBindings.Clear();
             labelCurrentPrice.DataBindings.Add("Text", documentModel, "CurrentItem.Price");
+
+            labelCurrentCount.DataBindings.Clear();
             labelCurrentCount.DataBindings.Add("Text", documentModel, "CurrentItem.Count");
+
+            labelCurrentAmount.DataBindings.Clear();
             labelCurrentAmount.DataBindings.Add("Text", documentModel, "CurrentItem.Amount");
+
+            labelCurrentName.DataBindings.Clear();
             labelCurrentName.DataBindings.Add("Text", documentModel, "CurrentItem.Name");
 
+            bindingSourceMain.Clear();
             bindingSourceMain.DataSource = documentModel.Items;
+        }
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            documentModel = saleDocumentService.Create().ToModel();
+
+            setDataBindings();
+            textBoxInput.Focus();
         }
 
         
         private void textBoxInput_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.N && e.Control)
+            {
+                documentModel = saleDocumentService.Create().ToModel();
+                setDataBindings();
+                return;
+            }
+            
+            if (documentModel.DocumentState == SaleDocumentState.Complete)
+                return;
+
+            if (e.KeyCode == Keys.Delete && e.Control)
+            {
+                saleDocumentService.Delete(documentModel.Id);
+                documentModel = saleDocumentService.Create().ToModel();
+                setDataBindings();
+                return;
+            }
+
             if (e.KeyCode == Keys.Up)
             {
                 bindingSourceMain.MovePrevious();
@@ -65,14 +107,39 @@ namespace Cashier.App
                 return;
             }
 
+            if (e.KeyCode == Keys.S && e.Control && documentModel.Items.Any())
+            {
+                decimal difference = 0;
+                using (Form f = new FormAmount(documentModel.DocumentAmount, delegate(decimal sum) 
+                    {
+                        difference = sum - documentModel.DocumentAmount;
+                        saleDocumentService.Save(documentModel.ToDTO());
+                        
+                    }))
+                {
+                    f.ShowDialog();
+                }
+
+                using (Form f = new FormDifference(difference))
+                {
+                    f.ShowDialog();
+                }
+
+                documentModel = saleDocumentService.Get(documentModel.Id).ToModel();
+                setDataBindings();
+                return;
+            }
+
 
             if (e.KeyCode != Keys.Enter)
                 return;
             if (textBoxInput.Text.StartsWith("#"))
             {
-                SaleDocumentItemViewModel item = saleDocumentService.GetDocumentItemByCode(textBoxInput.Text.Substring(1)).ToModel();
+                string code = textBoxInput.Text.Substring(1);
+                SaleDocumentItemViewModel item = saleDocumentService.GetDocumentItemByCode(code).ToModel();
                 if (item == null)
                 {
+                    MessageBox.Show(String.Format("Позиция с кодом {0} не найдена", code), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     return;
                 }
 

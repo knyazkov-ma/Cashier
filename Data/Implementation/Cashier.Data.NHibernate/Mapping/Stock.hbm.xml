@@ -5,6 +5,7 @@
          lazy="false">
     <id name="Id" type="Int64" column="Id" />
     
+    
     <property name="Count" type="Int32" not-null="true" />
     <many-to-one foreign-key="Stock_Catalog_FK" name="Catalog" fetch="join" 
                  column="CatalogId" 

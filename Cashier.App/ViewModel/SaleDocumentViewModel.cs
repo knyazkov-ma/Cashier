@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using Cashier.Entity;
+using System.ComponentModel;
 using System.Linq;
+using Cashier.DataService.Helpers;
 
 namespace Cashier.App.ViewModel
 {
@@ -10,13 +12,13 @@ namespace Cashier.App.ViewModel
         {
             Items = new BindingList<SaleDocumentItemViewModel>();
             CurrentItem = new SaleDocumentItemViewModel();
-            documentState = "Открытый";
+            documentState =  SaleDocumentState.Open;
         }
 
         public long Id { get; set; }
 
-        private string documentState;
-        public string DocumentState
+        private SaleDocumentState documentState;
+        public SaleDocumentState DocumentState
         {
             get
             {
@@ -33,24 +35,12 @@ namespace Cashier.App.ViewModel
             }
         }
 
-        private string documentNumber;
-        public string DocumentNumber
+
+        public string DocumentStateName
         {
-            get
-            {
-                return this.documentNumber;
-            }
-
-            set
-            {
-                if (value != this.documentNumber)
-                {
-                    this.documentNumber = value;
-                    NotifyPropertyChanged();
-                }
-            }
+            get { return documentState.GetDisplayName(); }
         }
-
+        
         public int PositionCount
         {
             get

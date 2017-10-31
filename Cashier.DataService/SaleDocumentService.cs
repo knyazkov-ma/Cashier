@@ -3,11 +3,13 @@ using Cashier.DataService.DTO;
 using Cashier.DataService.Helpers;
 using Cashier.DataService.Interface;
 using Cashier.Entity;
-using System;
+using System.Linq;
 using System.Collections.Generic;
+using Cashier.DataService.Aspects;
 
 namespace Cashier.DataService
 {
+    [Transaction]
     public class SaleDocumentService: ISaleDocumentService
     {
         private readonly IBaseRepository<Catalog> catalogRepository;
@@ -26,7 +28,7 @@ namespace Cashier.DataService
             this.repository = repository;
         }
 
-        public SaleDocumentDTO GetNew()
+        public SaleDocumentDTO Create()
         {
             SaleDocument document = new SaleDocument() { State = SaleDocumentState.Open };
             saleDocumentRepository.Save(document);
@@ -35,14 +37,41 @@ namespace Cashier.DataService
             return new SaleDocumentDTO()
             {
                 Id = document.Id,
-                State = document.State.GetDisplayName(),
+                State = document.State,
                 Items = new List<SaleDocumentItemDTO>()
             };
+        }
+
+        public SaleDocumentDTO Get(long id)
+        {
+            SaleDocument document =  saleDocumentRepository.Get(id);
+            
+            return new SaleDocumentDTO()
+            {
+                Id = document.Id,
+                State = document.State,
+                Items = document.Items.Select(t => new SaleDocumentItemDTO()
+                {
+                     Id = t.Id,
+                     Code = t.Code,
+                     Count = t.Count,
+                     Name = t.Name,
+                     Price = t.Price
+                })
+            };
+        }
+
+        public void Delete(long id)
+        {
+            saleDocumentRepository.Delete(id);
+            repository.SaveChanges();
         }
 
         public SaleDocumentItemDTO GetDocumentItemByCode(string code)
         {
             Catalog catalog = catalogRepository.Get(t => t.Code.ToUpper() == code.ToUpper());
+            if (catalog == null)
+                return null;
 
             return new SaleDocumentItemDTO()
             {
@@ -51,6 +80,34 @@ namespace Cashier.DataService
                  Name = catalog.Name,
                  Price = catalog.Price
             };
+        }
+
+        [Transaction]
+        public void Save(SaleDocumentDTO dto)
+        {
+            SaleDocument document = saleDocumentRepository.Get(dto.Id);
+            document.State = SaleDocumentState.Complete;
+
+            foreach (SaleDocumentItemDTO item in dto.Items)
+            {
+                document.Items.Add(new SaleDocumentItem()
+                {
+                    Amount = item.Price * item.Count,
+                    Count = item.Count,
+                    Name = item.Name,
+                    Price = item.Price,
+                    Code = item.Code,
+                    Document = document
+                });
+
+                Stock stock = stockRepository.Get(t => t.Catalog.Code == item.Code);
+                stock.Count -= item.Count;
+                stockRepository.Save(stock);
+            }
+                        
+            saleDocumentRepository.Save(document);
+            
+            repository.SaveChanges();
         }
     }
 }

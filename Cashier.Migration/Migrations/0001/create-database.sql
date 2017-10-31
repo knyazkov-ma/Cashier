@@ -8,11 +8,12 @@
 
     create table SaleDocumentItem (
         Id BIGINT not null,
-       Name VARCHAR(1000) not null,
+       Code VARCHAR(50) not null,
+	   Name VARCHAR(1000) not null,
        Count INT not null,
        Price DECIMAL(19,2) not null,
        Amount DECIMAL(19,2) not null,
-       SaleDocumentId BIGINT null,
+       SaleDocumentId BIGINT not null,
        primary key (Id)
     )
 

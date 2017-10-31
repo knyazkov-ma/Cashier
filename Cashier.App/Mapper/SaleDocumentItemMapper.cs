@@ -7,6 +7,9 @@ namespace Cashier.App.Mapper
     {
         public static SaleDocumentItemViewModel ToModel(this SaleDocumentItemDTO dto)
         {
+            if (dto == null)
+                return null;
+
             var model = new SaleDocumentItemViewModel();
             model.Id = dto.Id;
             model.Count = dto.Count;

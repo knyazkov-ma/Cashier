@@ -16,6 +16,6 @@ namespace Cashier.Entity
         /// <summary>
         /// Товарные позиции
         /// </summary>
-        public IEnumerable<SaleDocumentItem> Items { get; set; }
+        public IList<SaleDocumentItem> Items { get; set; }
     }
 }

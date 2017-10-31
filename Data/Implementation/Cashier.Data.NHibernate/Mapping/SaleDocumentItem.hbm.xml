@@ -7,9 +7,14 @@
       </generator>
     </id>
 
+    <property name="Code" length="50"      not-null="true"/>
     <property name="Name"  length="1000"   not-null="true"/>
     <property name="Count" type="Int32"    not-null="true"/>
     <property name="Price" type="Decimal"  not-null="true"/>
     <property name="Amount" type="Decimal" not-null="true"/>
+
+    <many-to-one foreign-key="SaleDocumentItem_SaleDocument_FK" name="Document" fetch="join"
+                 column="SaleDocumentId"
+                 class="Cashier.Entity.SaleDocument, Cashier.Entity" not-null="true"/>
   </class>
 </hibernate-mapping>
