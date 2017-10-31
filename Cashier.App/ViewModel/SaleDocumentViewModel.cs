@@ -3,13 +3,13 @@ using System.Linq;
 
 namespace Cashier.App.ViewModel
 {
-    public class PurchaseDocumentViewModel : BaseViewModel
+    public class SaleDocumentViewModel : BaseViewModel
     {
 
-        public PurchaseDocumentViewModel()
+        public SaleDocumentViewModel()
         {
-            Items = new BindingList<PurchaseDocumentItemViewModel>();
-            CurrentItem = new PurchaseDocumentItemViewModel();
+            Items = new BindingList<SaleDocumentItemViewModel>();
+            CurrentItem = new SaleDocumentItemViewModel();
             documentState = "Открытый";
         }
 
@@ -67,8 +67,8 @@ namespace Cashier.App.ViewModel
             }
         }
         
-        private PurchaseDocumentItemViewModel currentItem;
-        public PurchaseDocumentItemViewModel CurrentItem
+        private SaleDocumentItemViewModel currentItem;
+        public SaleDocumentItemViewModel CurrentItem
         {
             get
             {
@@ -93,6 +93,6 @@ namespace Cashier.App.ViewModel
             NotifyPropertyChanged("DocumentAmount");
         }
 
-        public BindingList<PurchaseDocumentItemViewModel> Items { get; set; }
+        public BindingList<SaleDocumentItemViewModel> Items { get; set; }
     }
 }

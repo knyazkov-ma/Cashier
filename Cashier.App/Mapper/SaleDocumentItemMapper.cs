@@ -1,18 +1,13 @@
 ﻿using Cashier.App.ViewModel;
 using Cashier.DataService.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cashier.App.Mapper
 {
-    public static class PurchaseDocumentItemMapper
+    public static class SaleDocumentItemMapper
     {
-        public static PurchaseDocumentItemViewModel ToModel(this PurchaseDocumentItemDTO dto)
+        public static SaleDocumentItemViewModel ToModel(this SaleDocumentItemDTO dto)
         {
-            var model = new PurchaseDocumentItemViewModel();
+            var model = new SaleDocumentItemViewModel();
             model.Id = dto.Id;
             model.Count = dto.Count;
             model.Price = dto.Price;

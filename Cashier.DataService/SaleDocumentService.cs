@@ -5,25 +5,25 @@ using System.Collections.Generic;
 
 namespace Cashier.DataService
 {
-    public class PurchaseDocumentService: IPurchaseDocumentService
+    public class SaleDocumentService: ISaleDocumentService
     {
         private string[] names = new string[] { "Мороженное детское", "Пельмени", "Печенье" };
 
-        public PurchaseDocumentDTO GetNew()
+        public SaleDocumentDTO GetNew()
         {
-            return new PurchaseDocumentDTO()
+            return new SaleDocumentDTO()
             {
                 Id = 100123,
                 Number = "100123",
                 State = "Открыт",
-                Items = new List<PurchaseDocumentItemDTO>()
+                Items = new List<SaleDocumentItemDTO>()
             };
         }
 
-        public PurchaseDocumentItemDTO GetDocumentItemByCode(string code)
+        public SaleDocumentItemDTO GetDocumentItemByCode(string code)
         {
             Random rnd = new Random();
-            return new PurchaseDocumentItemDTO()
+            return new SaleDocumentItemDTO()
             {
                 Id = rnd.Next(10000, 55555),
                 Code = code,

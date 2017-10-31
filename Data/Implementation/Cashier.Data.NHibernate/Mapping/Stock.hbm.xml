@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Cashier.Entity.Stock, Cashier.Entity" 
+         table="Stock" 
+         lazy="false">
+    <id name="Id" type="Int64" column="Id" />
+    
+    <property name="Count" type="Int32" not-null="true" />
+    <many-to-one foreign-key="Stock_Catalog_FK" name="Catalog" fetch="join" 
+                 column="CatalogId" 
+                 class="Cashier.Entity.Catalog, Cashier.Entity" not-null="true"/>
+  </class>
+</hibernate-mapping>

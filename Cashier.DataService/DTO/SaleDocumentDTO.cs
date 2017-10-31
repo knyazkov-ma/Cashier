@@ -2,7 +2,7 @@
 
 namespace Cashier.DataService.DTO
 {
-    public class PurchaseDocumentDTO 
+    public class SaleDocumentDTO 
     {
         public long Id { get; set; }
 
@@ -10,6 +10,6 @@ namespace Cashier.DataService.DTO
 
         public string Number { get; set; }
          
-        public IEnumerable<PurchaseDocumentItemDTO> Items { get; set; }
+        public IEnumerable<SaleDocumentItemDTO> Items { get; set; }
     }
 }

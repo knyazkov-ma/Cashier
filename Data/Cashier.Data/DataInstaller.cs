@@ -1,6 +1,4 @@
-﻿using Microsoft.Practices.Unity;
-using Cashier.Data.Repository;
-using Unity;
+﻿using Unity;
 using Unity.Lifetime;
 
 namespace Cashier.Data

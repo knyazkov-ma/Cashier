@@ -1,6 +1,6 @@
 ﻿namespace Cashier.App.ViewModel
 {
-    public class PurchaseDocumentItemViewModel : BaseViewModel
+    public class SaleDocumentItemViewModel : BaseViewModel
     {
         public long Id { get; set; }
 

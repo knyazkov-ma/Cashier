@@ -107,6 +107,16 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Cashier.Entity\Cashier.Entity.csproj">
+      <Project>{99b07fda-7f68-4348-9794-2134d3352475}</Project>
+      <Name>Cashier.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cashier.Data.NHibernate\Cashier.Data.NHibernate.csproj">
+      <Project>{c480a8c6-a30e-4519-b2ca-e48b62e53ca6}</Project>
+      <Name>Cashier.Data.NHibernate</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

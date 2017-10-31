@@ -1,4 +1,5 @@
 ﻿using Cashier.Data.Repository;
+using Cashier.Entity;
 using Unity;
 
 namespace Cashier.Data.NHibernate.Repository
@@ -10,7 +11,11 @@ namespace Cashier.Data.NHibernate.Repository
             
             //регистрация репозиториев
             container.RegisterType<IRepository, BaseRepository>();
-                        
+
+            container.RegisterType<IBaseRepository<Catalog>, BaseRepository<Catalog>>();
+            container.RegisterType<IBaseRepository<SaleDocument>, BaseRepository<SaleDocument>>();
+            container.RegisterType<IBaseRepository<SaleDocumentItem>, BaseRepository<SaleDocumentItem>>();
+            container.RegisterType<IBaseRepository<Stock>, BaseRepository<Stock>>();
         }
         
     }

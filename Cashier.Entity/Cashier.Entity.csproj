@@ -41,6 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="SaleDocumentItem.cs" />
+    <Compile Include="SaleDocumentState.cs" />
+    <Compile Include="Stock.cs" />
+    <Compile Include="SaleDocument.cs" />
+    <Compile Include="Catalog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

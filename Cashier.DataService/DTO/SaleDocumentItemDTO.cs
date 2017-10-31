@@ -1,6 +1,6 @@
 ﻿namespace Cashier.DataService.DTO
 {
-    public class PurchaseDocumentItemDTO
+    public class SaleDocumentItemDTO
     {
         public long Id { get; set; }
 

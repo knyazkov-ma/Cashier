@@ -111,30 +111,10 @@
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Mapping\DescriptionProblem.hbm.xml" />
-    <EmbeddedResource Include="Mapping\UserSession.hbm.xml" />
-    <EmbeddedResource Include="Mapping\WorkScheduleItem.hbm.xml" />
-    <EmbeddedResource Include="Mapping\WorkCalendarItem.hbm.xml" />
-    <EmbeddedResource Include="Mapping\TypeWorkerUser.hbm.xml" />
-    <EmbeddedResource Include="Mapping\AccessWorkerUser.hbm.xml" />
-    <EmbeddedResource Include="Mapping\WorkerUser.hbm.xml" />
-    <EmbeddedResource Include="Mapping\RequestFile.hbm.xml" />
-    <EmbeddedResource Include="Mapping\OrganizationObjectTypeWorker.hbm.xml" />
-    <EmbeddedResource Include="Mapping\BaseRequest.hbm.xml" />
-    <EmbeddedResource Include="Mapping\BaseRequestEvent.hbm.xml" />
-    <EmbeddedResource Include="Mapping\StatusRequest.hbm.xml" />
-    <EmbeddedResource Include="Mapping\RequestObject.hbm.xml" />
-    <EmbeddedResource Include="Mapping\Worker.hbm.xml" />
-    <EmbeddedResource Include="Mapping\HardType.hbm.xml" />
-    <EmbeddedResource Include="Mapping\Manufacturer.hbm.xml" />
-    <EmbeddedResource Include="Mapping\Model.hbm.xml" />
-    <EmbeddedResource Include="Mapping\ObjectType.hbm.xml" />
-    <EmbeddedResource Include="Mapping\EmployeeObject.hbm.xml" />
-    <EmbeddedResource Include="Mapping\Organization.hbm.xml" />
-    <EmbeddedResource Include="Mapping\CabinetUser.hbm.xml" />
-    <EmbeddedResource Include="Mapping\Settings.hbm.xml" />
-    <EmbeddedResource Include="Mapping\Post.hbm.xml" />
-    <EmbeddedResource Include="Mapping\Employee.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Catalog.hbm.xml" />
+    <EmbeddedResource Include="Mapping\SaleDocumentItem.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Stock.hbm.xml" />
+    <EmbeddedResource Include="Mapping\SaleDocument.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

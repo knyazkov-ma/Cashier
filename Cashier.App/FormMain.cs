@@ -9,17 +9,17 @@ namespace Cashier.App
 {
     public partial class FormMain : Form
     {
-        private PurchaseDocumentViewModel documentModel;
-        private readonly IPurchaseDocumentService purchaseDocumentService;
+        private SaleDocumentViewModel documentModel;
+        private readonly ISaleDocumentService saleDocumentService;
         public FormMain()
         {
             InitializeComponent();
-            purchaseDocumentService = new PurchaseDocumentService();
+            saleDocumentService = new SaleDocumentService();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            documentModel = purchaseDocumentService.GetNew().ToModel();
+            documentModel = saleDocumentService.GetNew().ToModel();
 
             labelDocumentNumber.DataBindings.Add("Text", documentModel, "DocumentNumber");
             labelPositionCount.DataBindings.Add("Text", documentModel, "PositionCount");
@@ -41,14 +41,14 @@ namespace Cashier.App
             if (e.KeyCode == Keys.Up)
             {
                 bindingSourceMain.MovePrevious();
-                documentModel.CurrentItem = (PurchaseDocumentItemViewModel)bindingSourceMain.Current;
+                documentModel.CurrentItem = (SaleDocumentItemViewModel)bindingSourceMain.Current;
                 return;
             }
 
             if (e.KeyCode == Keys.Down)
             {
                 bindingSourceMain.MoveNext();
-                documentModel.CurrentItem = (PurchaseDocumentItemViewModel)bindingSourceMain.Current;
+                documentModel.CurrentItem = (SaleDocumentItemViewModel)bindingSourceMain.Current;
                 return;
             }
 
@@ -56,7 +56,7 @@ namespace Cashier.App
             {
                 int p = bindingSourceMain.CurrencyManager.Position;
                 bindingSourceMain.RemoveCurrent();
-                documentModel.CurrentItem = (PurchaseDocumentItemViewModel)bindingSourceMain.Current;
+                documentModel.CurrentItem = (SaleDocumentItemViewModel)bindingSourceMain.Current;
                 if(p > 0)
                     dataGridViewMain.Rows[p - 1].Selected = true;
                 documentModel.NotifyChanged();
@@ -68,7 +68,7 @@ namespace Cashier.App
                 return;
             if (textBoxInput.Text.StartsWith("#"))
             {
-                PurchaseDocumentItemViewModel item = purchaseDocumentService.GetDocumentItemByCode(textBoxInput.Text.Substring(1)).ToModel();
+                SaleDocumentItemViewModel item = saleDocumentService.GetDocumentItemByCode(textBoxInput.Text.Substring(1)).ToModel();
                 if (item == null)
                 {
                     return;

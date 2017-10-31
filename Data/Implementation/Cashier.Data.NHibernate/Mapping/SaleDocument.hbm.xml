@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Cashier.Entity.SaleDocument, Cashier.Entity" table="SaleDocument" lazy="false">
+    <id name="Id" column="Id" unsaved-value="0">
+      <generator class="sequence">
+        <param name="sequence">SQ_GLOBAL</param>
+      </generator>
+    </id>
+
+    <property name="State" type="Cashier.Entity.SaleDocumentState, Cashier.Entity" not-null="true"/>
+    <property name="Number"    length="200"  unique="true" index="SaleDocument_Number_idx" not-null="true"/>
+
+    <bag name="Items" table="SaleDocumentItem" cascade="all,delete-orphan,save-update" inverse="true">
+      <key column="SaleDocumentId" />
+      <one-to-many class="Cashier.Entity.SaleDocumentItem, Cashier.Entity" />
+    </bag>
+    
+  </class>
+</hibernate-mapping>
