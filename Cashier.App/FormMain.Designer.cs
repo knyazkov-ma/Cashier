@@ -89,6 +89,8 @@
             this.dataGridViewMain.Name = "dataGridViewMain";
             this.dataGridViewMain.ReadOnly = true;
             this.dataGridViewMain.RowHeadersVisible = false;
+            this.dataGridViewMain.RowTemplate.Height = 30;
+            this.dataGridViewMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewMain.Size = new System.Drawing.Size(732, 199);
             this.dataGridViewMain.TabIndex = 1;
             // 
